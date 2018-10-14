@@ -1,0 +1,66 @@
+http --form <주소> client_id=<클라이언트아이디> client_secret=<클라이언트비밀번호> grant_type=password username=<아이디> password=<비밀번호>
+
+http --form http://52.78.16.95:8000/o/token/ client_id=wc1Yz6RgGcdcczbjs4UcOnpN1k1lxXwIEduV3mM6 client_secret=MGhEj13TX8Yip9ltC8mtgB3Ni1WkCyeYPwbrIG1Gs9iBYyEAtlbkq1BQoGEUu8qbMuiZzbcs8COoZJKTXuFoNFVZn89xGnT9DGGHu5gt4P9jMPpWXSlrhP65xnLsodu9 grant_type=password username=gelos2012 password=123456
+
+아이디 비밀번호 입력하면 아래와 같이 토큰을 발급해줌 참고로 응답 200코드로 해줌
+
+HTTP/1.0 200 OK
+Cache-Control: no-store
+Content-Length: 169
+Content-Type: application/json
+Date: Fri, 03 Nov 2017 12:02:12 GMT
+Pragma: no-cache
+Server: WSGIServer/0.2 CPython/3.5.2
+X-Frame-Options: SAMEORIGIN
+
+{
+    "access_token": "VdYAzMQPW8NSJ5glurQhvc43BvV3QR",
+    "expires_in": 36000,
+    "refresh_token": "avdaxGVCQBO5aY0qVmIZZKj6yhUnLE",
+    "scope": "write read",
+    "token_type": "Bearer"
+}
+
+위에서 access_token을 저장해두면 위 토큰으로 이제 로그인 여부를 체크하면됨! 로그아웃 처리시 저장하고 있던 토큰 날려버리면됨!
+자 이제 토큰활용하는 방법 헤더 부분에 끼워 넣으면된다! 아래 참고! 
+
+
+curl -H "Authorization: Bearer gO4oUSzURsUlwveRrruseStRZM2JSu" -X POST -d"username=foo&password=bar" 127.0.0.1:8000/user/sign_up/
+
+ -h는 헤더에 " " 안에 있는 문장을 넣어준다는 소리고 
+ "" 문장은 Authorization에 Bearer g04 ~~키를 넣었다는소리며 콜론 앞에 있는건 필수인지 모르겠지만 콜론 뒤에 Bearer 부터는 반드시 써줘야함! 
+
+CMECWpk8v567TpJzVNtqCex4zVPm88
+
+api규칙 
+
+베이스 주소 http://52.78.16.95:8000/ =============================================================================================================
+
+회원관련 주소	http://52.78.16.95:8000/user/  -------------------------------------------------------------------------------------------
+
+회원들의 목록을 볼 수 있다. GET메서드 				http://52.78.16.95:8000/user/users/
+아이디를 통해 볼 수 있다. GET 메서드 				http://52.78.16.95:8000/user/users/?username=gelos
+취득한 유저 pk(기본키)를 통해서 수정,삭제 PUT/DELETE 메서드 	http://52.78.16.95:8000/user/users/1/ 
+*회원가입 해당 주소로 form(x-www-data머시기)와 POST메서드	http://52.78.16.95:8000/user/sign_up/    (username과 password를 넘겨주면된다.)
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+댓글,여행지 주소 http://52.78.16.95:8000/tour/ -------------------------------------------------------------------------------------------
+
+게시글 목록 http://52.78.16.95:8000/tour/post/ ----------------------------------------------------------------------------------------------------------
+게시글 제목으로 찾기 http://52.78.16.95:8000/tour/post/?contentid=<제목>
+게시글 contentid로 찾기 http://52.78.16.95:8000/tour/post/?contentid=<contentid>
+게시글 삭제하기 게시글 pk찾아 http://52.78.16.95:8000/tour/post/<pk>/ --> http://52.78.16.95:8000/tour/post/1/  (DELETE 메서드는삭제 PUT메서드는 수정)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+댓글 목록 http://52.78.16.95:8000/tour/comment/-----------------------------------------------------------------------------------------------
+
+n번 게시글로 찾기  http://52.78.16.95:8000/tour/comment/?post=1
+작성자로 찾기 http://52.78.16.95:8000/tour/comment/?author=2 
+특정 댓글 수정, 삭제하기 http://52.78.16.95:8000/tour/comment/1/
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+

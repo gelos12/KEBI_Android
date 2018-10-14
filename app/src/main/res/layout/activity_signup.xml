@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="100dp">
+
+        <TextView
+            android:text="회원가입"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="아이디"
+            android:textColor="@color/colorPrimary"
+            android:gravity="right"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/signup_username_edit_text"
+            android:hint="username"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="비밀번호"
+            android:textColor="@color/colorPrimary"
+            android:gravity="right"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/signup_password_edit_text"
+            android:hint="password"
+            android:ems="8"
+            android:inputType="textPassword"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="비밀번호확인"
+            android:textColor="@color/colorPrimary"
+            android:gravity="right"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/signup_password_check_edit_text"
+            android:hint="password check"
+            android:ems="8"
+            android:inputType="textPassword"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/signup_ok_button"
+            android:text="확인"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/signup_cancel_button"
+            android:text="취소"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>
